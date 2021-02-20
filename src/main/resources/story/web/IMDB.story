@@ -1,19 +1,19 @@
 Description: Task One User activity on IMDb site
 
 Scenario: Create a new IMDB account
-Given I am on a page with the URL ‘https://www.imdb.com/’
+Given I am on a page with the URL 'https://www.imdb.com/'
 When I click on an element with the text 'Sign In'
 When I click on an element with the text 'Sign in with Google’
 When I fill <email> and <password> to create account
 Then the page with the URL 'https://www.imdb.com/?ref_=login' is loaded
-And field located `By.xpath(//span[contains(.,'Purpose')])` exists
+And field located by the xpath(//span[contains(.,'<userName>')]) exists
 Examples:
-|email|password|
-|testpurposemail2021@gmail.com|testemail12345678|
+|email                        |password         |userName|
+|testpurposemail2021@gmail.com|testemail12345678|Purpose |
 
 
 Scenario: Perform search for a movie
-When I enter "<film name>" into a field by the xpath (//input[@id='suggestion-search'])
+When I enter <film name> into a field by the xpath (//input[@id='suggestion-search'])
 And I click on an element by the xpath (//button[@id="suggestion-search-button"])
 And I wait untill an element with the xpath (//div[@id='pagecontent']) appears
 Then an element by the xpath (//span[@class='findSearchTerm' and text()='"<film name>"']) exists
@@ -33,7 +33,7 @@ Examples:
 |film name|
 |Riddick|
 
-Scenario: Sort and Export the Whatchlist
+Scenario: Sort and Export the Watchlist
 When I click on element with the xpath(//select[@class='lister-sort-by'])
 When I click on element with the xpath(//select[@class='lister-sort-by']/option[text()='Popularity'])
 When I click on element with the xpath(//a[contains(@href, 'list') and text()='Export this list'])
