@@ -13,10 +13,10 @@ Examples:
 
 
 Scenario: Perform search for a movie
-When I enter "<film name>" into a field by the xpath (//input[@id="suggestion-search"])
+When I enter "<film name>" into a field by the xpath (//input[@id='suggestion-search'])
 And I click on an element by the xpath (//button[@id="suggestion-search-button"])
-And I wait untill an element with the xpath (//div[@id="pagecontent"]) appears
-Then an element with the text 'Results for, "<film name>" appears
+And I wait untill an element with the xpath (//div[@id='pagecontent']) appears
+Then an element with the text 'Results for, <film name>' appears
 Examples:
 |film name|
 |Riddick|
@@ -28,7 +28,7 @@ When I click on an element with the text ‘Add to Watchlist’
 And I wait until an element with the text 'Added to Watchlist' appears
 When I click on an element with the xpath (//div[text()='Watchlist'])
 Then an element with the text 'Your Watchlist' appears
-And an element with the name "<film name>" exists
+And an element with the name '<film name>' exists
 Examples:
 |film name|
 |Riddick|
