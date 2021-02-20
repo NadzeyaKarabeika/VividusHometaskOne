@@ -1,3 +1,5 @@
+Description: This is a precondition for TrelloTask2
+
 Scenario: Sign up
 Given I am on the main application page
 When I enter `<email>` in field by the xpath(//section[@id='hero']//input[@name='email'])

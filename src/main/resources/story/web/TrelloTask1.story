@@ -12,15 +12,21 @@ Then the page with URL 'https://trello.com/create-first-team' is loaded
 Examples:
 |email                             |userName                   |userPassword                  |
 |testpurposemail2021@gmail.com     |PurposeTest                |testemail12345678             |
-|#{generate(Internet.emailAddress)}|#{generate(Name.firstName)}|#{generate(Internet.password)}|
-|#{generate(Internet.emailAddress)}|#{generate(Name.firstName)}|#{generate(Internet.password)}|
+|#{generate(Internet.emailAddress)}|#{generate(Name.name)}     |#{generate(Internet.password)}|
+|#{generate(Internet.emailAddress)}|#{generate(Name.fullName)} |#{generate(Internet.password)}|
 
 
-Scenario: Trello board creation using API
+Scenario: New Trello board creation using API
 Given request body: {
-displayName: "John Doe"
+displayName: "DreamTeam"
 teamType = "Operations"
 }
 When I issue a HTTP POST request for a resource with the URL 'https://trello.com/create-first-team'
 Then the response code is equal to `200`
+
+Scenario: Trello Board for User
+When I click on element with the text 'Start without Business Class'
+When I wait until an element with text 'Nice work!' appears
+When I click on element by the xpath(//button[@data-test-id="moonshot-success-button"])
+Then the element by the xpath(//span[@data-test-id="home-team-tab-name" and text()='DreamTeam']) exists
 
