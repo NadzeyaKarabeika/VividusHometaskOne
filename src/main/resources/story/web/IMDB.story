@@ -16,7 +16,7 @@ Scenario: Perform search for a movie
 When I enter "<film name>" into a field by the xpath (//input[@id='suggestion-search'])
 And I click on an element by the xpath (//button[@id="suggestion-search-button"])
 And I wait untill an element with the xpath (//div[@id='pagecontent']) appears
-Then an element with the text 'Results for, <film name>' appears
+Then an element by the xpath (//span[@class='findSearchTerm' and text()='"<film name>"']) exists
 Examples:
 |film name|
 |Riddick|
